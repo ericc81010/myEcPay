@@ -1,0 +1,38 @@
+FORMAT: 1A
+HOST: http://localhost:3000/myecPay
+
+# myEcPay
+
+## 訂單 API
+
+### 建立訂單 [POST /orders]
+
++ Request (application/json)
+
+    + Attributes
+        + tradeDesc: 促銷方案 (string) - 交易描述
+        + itemName: iphone20 (string) - 商品名稱
+        + totalAmount: 30000 (string) - 總金額
+        + returnUrl: `www.google.com` (string) - 返回 URL
+        + memberId: M01 (string) - 會員 ID
+        + memberName: 會員１ (string) - 會員名稱
+        + memberPhone: 0910123456 (string) - 會員電話
+        + sendAddress: 寄送地址 (string) - 寄送地址
+
++ Response 200 (application/json)
+
+    + Attributes
+        + status: success (string) - 狀態
+        + message: 訂單已創建 (string) - 訊息
+
+### 查詢訂單 [GET /orders/{merchantTradeNo}]
+
++ Parameters
+    + merchantTradeNo: E00120231216103019 (string) - 商戶交易編號
+
++ Response 200 (application/json)
+
+    + Attributes
+        + status: success (string) - 狀態
+        + data (object) - 訂單資料
+            + memberId: M01 (string) - 會員 ID
